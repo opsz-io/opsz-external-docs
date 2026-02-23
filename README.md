@@ -20,7 +20,6 @@ OpsZ is a modern IT automation platform that gives operations teams continuous a
 ### Diagrams
 - [**Architecture Overview**](diagrams/architecture-overview.md) — Component diagram
 - [**Data Flow**](diagrams/data-flow.md) — Discover → orchestrate → execute flow
-- [**Deployment Models**](diagrams/deployment-models.md) — On-premises, cloud, and hybrid options
 
 ## 🚀 Key Capabilities
 
