@@ -6,20 +6,16 @@ OpsZ is a modern IT automation platform that gives operations teams continuous a
 
 ## 📚 Documentation
 
-### Getting Started
+### Product Overview
 - [**Product Overview**](product-overview.md) — What OpsZ does, who it's for, and key capabilities
-- [**Getting Started Guide**](getting-started.md) — Quick start for new users
-
-### Technical Documentation
 - [**Architecture**](architecture.md) — High-level system design and components
 - [**Features**](features.md) — Complete feature catalog with status (GA, Beta, Planned)
-- [**Security**](security.md) — Zero-trust security model and compliance
-- [**Deployment**](deployment.md) — Deployment options and requirements
 
-### Integration & Use Cases
-- [**Integrations**](integrations.md) — Current and planned integrations (ServiceNow, PagerDuty, Grafana, Slack, Jira)
+### Capabilities & Roadmap
 - [**Use Cases**](use-cases.md) — Real-world scenarios and customer outcomes
+- [**Integrations**](integrations.md) — Current and planned integrations (ServiceNow, PagerDuty, Grafana, Slack, Jira)
 - [**Roadmap**](roadmap.md) — Near-term planned capabilities
+- [**Security**](security.md) — Zero-trust security model and compliance
 
 ### Diagrams
 - [**Architecture Overview**](diagrams/architecture-overview.md) — Component diagram
@@ -32,7 +28,7 @@ OpsZ is a modern IT automation platform that gives operations teams continuous a
 - **Workflow Orchestration** — DAG-based automation with approval workflows
 - **Edge AI Intelligence** — Semantic search, template discovery, and autonomous decision-making
 - **Zero-trust Security** — Outbound-only agents, RBAC, comprehensive audit trails
-- **Fast Deployment** — Production-ready in ~30 minutes
+- **API-First Integration** — Connect with your existing tools and workflows
 
 ## 💡 Why OpsZ?
 
