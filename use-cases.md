@@ -555,4 +555,4 @@ Choose a use case that matches your biggest pain point:
 3. **Compliance:** Automate security baseline enforcement
 4. **Scale:** Multi-cloud orchestration or database operations
 
-**Need help?** [Schedule a consultation](mailto:solutions@opsz.io) to discuss your specific use case.
+**Need help?** [Schedule a consultation](mailto:info@opsz.io) to discuss your specific use case.

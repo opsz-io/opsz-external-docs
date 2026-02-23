@@ -113,7 +113,6 @@ This catalog lists all OpsZ capabilities with their current availability status.
 | GitHub webhooks | Beta | Trigger jobs from pull requests, issues, and workflow events. |
 | API triggers | GA | Start jobs via REST API calls from external systems. |
 | Event-based triggers | Beta | React to infrastructure events and alerts. |
-| ServiceNow integration | Planned | Bi-directional incident and change management. |
 | PagerDuty integration | Planned | Alert-triggered workflow execution. |
 
 ---
@@ -249,7 +248,6 @@ This catalog lists all OpsZ capabilities with their current availability status.
 
 | Feature | Target | Description |
 |---------|--------|-------------|
-| ServiceNow | Q1 2026 | Bi-directional incident and change management integration. |
 | PagerDuty | Q1 2026 | Alert-triggered workflow execution. |
 | Grafana | Q2 2026 | Dashboard and alerting integration. |
 | Slack | Q1 2026 | Notifications and command execution via Slack. |
@@ -271,6 +269,6 @@ This catalog lists all OpsZ capabilities with their current availability status.
 
 ---
 
-**Questions about a specific feature?** [Contact us](mailto:support@opsz.io)
+**Questions about a specific feature?** [Contact us](mailto:info@opsz.io)
 
-**Want to influence the roadmap?** [Schedule a call](mailto:product@opsz.io)
+**Want to influence the roadmap?** [Schedule a call](mailto:info@opsz.io)

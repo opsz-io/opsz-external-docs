@@ -13,7 +13,7 @@ OpsZ is a modern IT automation platform that gives operations teams continuous a
 
 ### Capabilities & Roadmap
 - [**Use Cases**](use-cases.md) — Real-world scenarios and customer outcomes
-- [**Integrations**](integrations.md) — Current and planned integrations (ServiceNow, PagerDuty, Grafana, Slack, Jira)
+- [**Integrations**](integrations.md) — Current and planned integrations (GitHub, Slack, Jira, PagerDuty)
 - [**Roadmap**](roadmap.md) — Near-term planned capabilities
 - [**Security**](security.md) — Zero-trust security model and compliance
 
@@ -44,8 +44,7 @@ OpsZ is designed for IT operations teams managing hybrid infrastructure:
 ## 📞 Get In Touch
 
 - **Website:** [opsz.io](https://opsz.io)
-- **Request Demo:** [Contact Sales](mailto:sales@opsz.io)
-- **Support:** [support@opsz.io](mailto:support@opsz.io)
+- **Email:** [info@opsz.io](mailto:info@opsz.io)
 
 ---
 

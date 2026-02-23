@@ -19,7 +19,6 @@ This roadmap outlines our planned capabilities for 2026. Timelines and features 
 - **Status tracking refinements** — Improved real-time log and status collection
 
 ### Integrations
-- **ServiceNow** — Bi-directional incident and change management
 - **PagerDuty** — Alert-triggered workflow execution
 - **Slack** — Notifications and interactive approvals
 - **Jira** — Issue-driven workflow triggers
@@ -168,4 +167,4 @@ Enterprise customers can influence roadmap priorities through:
 
 **Beta vs. GA.** Features typically ship as Beta first, then move to GA after customer validation and refinement.
 
-**Questions?** [Contact product team](mailto:product@opsz.io) or [schedule a call](https://opsz.io/contact)
+**Questions?** [Contact us](mailto:info@opsz.io) or [schedule a call](https://opsz.io/contact)

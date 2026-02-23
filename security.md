@@ -338,7 +338,7 @@ Security tips for platform users:
 
 Found a security issue? We appreciate responsible disclosure:
 
-**Contact:** [security@opsz.io](mailto:security@opsz.io)
+**Contact:** [info@opsz.io](mailto:info@opsz.io)
 
 **PGP Key:** Available at [https://opsz.io/security/pgp-key.txt](https://opsz.io/security/pgp-key.txt)
 
@@ -357,6 +357,6 @@ Found a security issue? We appreciate responsible disclosure:
 
 ---
 
-**Questions about security?** [security@opsz.io](mailto:security@opsz.io)
+**Questions about security?** [info@opsz.io](mailto:info@opsz.io)
 
-**Need compliance documentation?** [compliance@opsz.io](mailto:compliance@opsz.io)
+**Need compliance documentation?** [info@opsz.io](mailto:info@opsz.io)

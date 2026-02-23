@@ -70,22 +70,6 @@ The platform doesn't require rip-and-replace — it enhances and automates workf
 
 ## Planned Integrations
 
-### ServiceNow
-
-**Target:** Q1 2026
-**Capabilities:**
-- Bi-directional incident management
-- Automated incident creation from OpsZ alerts
-- Workflow execution triggered by ServiceNow incidents
-- Change management integration
-- CMDB synchronization
-
-**Use Cases:**
-- Auto-create ServiceNow incidents when infrastructure issues detected
-- Execute remediation workflows directly from ServiceNow tickets
-- Update incident status automatically as workflows complete
-- Keep CMDB in sync with live infrastructure
-
 ### PagerDuty
 
 **Target:** Q1 2026
@@ -296,7 +280,7 @@ Every OpsZ capability is available via API, making custom integrations straightf
 
 | Quarter | Integrations |
 |---------|-------------|
-| Q1 2026 | ServiceNow, PagerDuty, Slack, Jira |
+| Q1 2026 | PagerDuty, Slack, Jira |
 | Q2 2026 | Grafana, AWS CloudWatch, Azure Monitor, Terraform, Ansible |
 | Q3 2026 | Datadog, Splunk, Elasticsearch, Jenkins |
 | Q4 2026 | Google Cloud Monitoring, Kubernetes Operators, Custom webhook library |
@@ -305,6 +289,6 @@ Every OpsZ capability is available via API, making custom integrations straightf
 
 ## Request an Integration
 
-Don't see the integration you need? [Let us know](mailto:integrations@opsz.io)
+Don't see the integration you need? [Let us know](mailto:info@opsz.io)
 
-Enterprise customers can influence integration priorities — [schedule a call](mailto:product@opsz.io) to discuss your needs.
+Enterprise customers can influence integration priorities — [schedule a call](mailto:info@opsz.io) to discuss your needs.
