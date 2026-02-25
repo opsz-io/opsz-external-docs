@@ -4,19 +4,35 @@
 
 ## Overview
 
-Target Profiles are a core capability in OpsZ that decouple workflow templates from specific infrastructure. A Target Profile is a named collection of **target mappings** that associate logical target names (used in workflow templates) with actual hosts, host groups, API endpoints, or Kubernetes clusters.
+A Target Profile maps nicknames to real servers. Instead of a workflow saying "run this on `10.0.1.50`", it says "run this on `primary_db`" — and the profile knows that `primary_db` is actually `10.0.1.50`.
 
-This enables a single workflow template to execute across multiple customer environments, divisions, or infrastructure types without modification. Templates reference logical names like `web_servers`, `primary_db`, or `notification_service` — the profile resolves these to real infrastructure at execution time.
+This means you write a workflow once and reuse it everywhere. Customer A's profile says `primary_db` is their AWS database. Customer B's profile says `primary_db` is their on-prem database. Same workflow, different infrastructure.
+
+**Quick example:**
+
+```
+Profile: "Acme Production"
+  web_server  → acme-web-01.example.com   (agent-based)
+  primary_db  → acme-db-prod.example.com  (SSH)
+  alerts      → https://acme.pagerduty.com/events  (HTTP)
+
+Profile: "BigCorp Production"
+  web_server  → bc-web-01.internal        (agent-based)
+  primary_db  → bc-oracle-prod.internal   (SSH)
+  alerts      → https://bigcorp.slack.com/webhook  (HTTP)
+```
+
+One "Deploy Web App" workflow targets `web_server`, `primary_db`, and `alerts`. Run it against Acme's profile — it hits Acme's servers. Run it against BigCorp's profile — it hits BigCorp's servers. No changes to the workflow.
 
 ## Why Target Profiles?
 
-Without profiles, every workflow must hard-code its target infrastructure. This creates problems:
+Without profiles, every workflow has server names baked in. That means:
 
-- **Template duplication** — the same workflow rewritten for each customer or environment
-- **Maintenance burden** — infrastructure changes require updating every workflow that references those systems
-- **No environment promotion** — can't reuse a dev workflow in staging or production without editing it
+- **Copy-paste workflows** — rewriting the same workflow for each customer or environment
+- **Brittle maintenance** — a server gets replaced and you're hunting through every workflow that references it
+- **No dev-to-prod promotion** — can't test a workflow in dev and run the same thing in production
 
-Target Profiles introduce a layer of indirection: templates reference logical names, profiles resolve them to actual targets.
+Profiles fix this: workflows reference nicknames, profiles translate them to real infrastructure.
 
 ## How It Works
 
