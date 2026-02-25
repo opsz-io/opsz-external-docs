@@ -1,0 +1,133 @@
+# Target Profiles
+
+**Last updated:** February 2026
+
+## Overview
+
+Target Profiles are a core capability in OpsZ that decouple workflow templates from specific infrastructure. A Target Profile is a named collection of **target mappings** that associate logical target names (used in workflow templates) with actual hosts, host groups, API endpoints, or Kubernetes clusters.
+
+This enables a single workflow template to execute across multiple customer environments, divisions, or infrastructure types without modification. Templates reference logical names like `web_servers`, `primary_db`, or `notification_service` — the profile resolves these to real infrastructure at execution time.
+
+## Why Target Profiles?
+
+Without profiles, every workflow must hard-code its target infrastructure. This creates problems:
+
+- **Template duplication** — the same workflow rewritten for each customer or environment
+- **Maintenance burden** — infrastructure changes require updating every workflow that references those systems
+- **No environment promotion** — can't reuse a dev workflow in staging or production without editing it
+
+Target Profiles introduce a layer of indirection: templates reference logical names, profiles resolve them to actual targets.
+
+## How It Works
+
+### Target Mapping Types
+
+Each mapping in a profile associates a logical name with one of four target types:
+
+| Type | What It Resolves To | Example |
+|------|-------------------|---------|
+| **Host** | A single server or instance | `"primary_db"` maps to `db-prod-01.example.com` |
+| **Host Group** | A dynamic set of servers matching a query | `"web_servers"` maps to all hosts tagged `web` in `us-east-1` |
+| **API Endpoint** | An external service URL | `"notification"` maps to a PagerDuty or Slack webhook |
+| **Kubernetes Cluster** | A K8s cluster | `"k8s_runner"` maps to a production EKS/GKE/AKS cluster |
+
+Each mapping also specifies a **connection method** (agent-based, SSH, HTTP, or Kubernetes API), an optional **execution user**, and a **location** hint for routing.
+
+### Dynamic Host Groups
+
+Host group mappings don't point to a static list of servers — they define a query that resolves at execution time. Queries can filter by:
+
+- **Tags** — all specified tags must match (e.g., `["web", "production"]`)
+- **Region** — geographic or cloud region
+- **Provider** — AWS, GCP, Azure, on-premises
+- **Status** — active, maintenance, etc.
+
+This means your profile automatically picks up new servers as they're added to your fleet, without manual updates.
+
+### Profile Metadata
+
+Every profile includes:
+
+- **Environment classification** — dev, staging, production, or testing
+- **Status** — active, inactive, or draft
+- **Default flag** — mark one profile as the default per environment
+- **Tags** — arbitrary metadata for organization and filtering
+
+## Key Use Cases
+
+### One Template, Many Customers
+
+A managed service provider creates a single `deploy-web-app` workflow template. Each customer gets their own target profile:
+
+| Profile | `web_servers` resolves to | `primary_db` resolves to |
+|---------|--------------------------|--------------------------|
+| `acme-prod` | `acme-web-01`, `acme-web-02` (AWS) | `acme-db-01` (AWS) |
+| `bigcorp-prod` | `bc-web-01` through `bc-web-10` (on-prem) | `bc-db-cluster` (on-prem) |
+| `startup-prod` | `startup-web-01` (GCP) | `startup-db-01` (GCP) |
+
+The same template runs identically across all three — the profile handles the infrastructure differences.
+
+### Environment Promotion
+
+Clone a profile to promote workflows across environments:
+
+| Profile | `app_server` | `database` |
+|---------|-------------|------------|
+| `acme-dev` | 1 dev server | dev database |
+| `acme-staging` | 2 staging servers | staging database |
+| `acme-prod` | 10 production servers (via tag query) | production cluster |
+
+The workflow template stays the same — only the profile changes.
+
+### Multi-Cloud Within a Single Profile
+
+A profile can map different targets to different cloud providers and connection types:
+
+| Logical Name | Type | Provider | Target |
+|-------------|------|----------|--------|
+| `web_servers` | Host Group | AWS | All hosts tagged `web` in AWS |
+| `api_gateway` | K8s Cluster | GCP | GKE cluster |
+| `monitoring` | API Endpoint | — | Grafana API |
+| `batch_workers` | Host Group | Azure | All hosts tagged `batch` in Azure |
+
+## Workflow Integration
+
+### Execution Flow
+
+1. **Create a job** — select a workflow template and a target profile
+2. **Validation** — OpsZ checks the profile has mappings for all targets the template requires
+3. **Resolution** — each logical name is resolved to actual infrastructure (hostnames, IPs, endpoints, cluster details)
+4. **Execution** — each workflow step runs against its resolved target using the appropriate connection method
+5. **Monitoring** — real-time status tracking per step, per target
+
+### Pre-Execution Validation
+
+Before a workflow runs, OpsZ validates the profile against the template's requirements:
+
+- **Missing targets** — the template needs a target the profile doesn't have (blocks execution)
+- **Extra targets** — the profile has mappings the template doesn't use (warning only)
+- **Offline targets** — a mapped host or endpoint is unreachable (warning)
+
+The UI shows these results in real time as you select a profile, so issues are caught before execution.
+
+## Profile Management
+
+### Clone
+
+Deep-copy a profile to create a variant for a different environment or customer. Cloning copies all mappings — you only need to update the targets that differ.
+
+### Import / Export
+
+Export profiles as JSON for backup, sharing, or migrating between OpsZ instances. Import recreates the profile with all its mappings.
+
+### UI
+
+Target Profiles are managed through the OpsZ dashboard:
+
+- **List view** — browse profiles by environment (dev, staging, production, testing), search by name, paginate through large sets
+- **Edit view** — modify profile metadata and manage individual target mappings
+- **Profile selector** — when creating a job, an autocomplete dropdown shows available profiles with real-time validation against the selected template
+
+---
+
+**Questions about Target Profiles?** [Contact us](mailto:info@opsz.io)
