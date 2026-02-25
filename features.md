@@ -33,6 +33,9 @@ This catalog lists all OpsZ capabilities with their current availability status.
 | On-demand inventory refresh | GA | Real-time queries for current system state. |
 | Custom metadata collection | GA | Configurable data collection via YAML templates. |
 | Cloud instance metadata | Beta | AWS EC2 instance information including instance type, region, and tags. |
+| Target profiles | Beta | Named collections of logical-to-physical target mappings. Map logical names to actual hosts, host groups, API endpoints, or Kubernetes clusters. Represent customers, divisions, or environments. [Learn more](target-profiles.md) |
+| Dynamic host group resolution | Beta | Target mappings resolve host groups dynamically based on tags, region, provider, and status. |
+| Profile clone / import / export | Beta | Clone profiles across environments. JSON export/import for sharing between OpsZ instances. |
 | Multi-cloud discovery | Planned | Standardized discovery for GCP and Azure instances. |
 | External inventory integration | Planned | API for importing data from third-party CMDB and discovery tools. |
 
@@ -58,6 +61,8 @@ This catalog lists all OpsZ capabilities with their current availability status.
 | Visual workflow designer | Beta | Drag-and-drop interface generates version-controlled YAML. |
 | Workflow templates | GA | Reusable template library with metadata and search capabilities. |
 | Cross-platform execution | Beta | Single workflow targets nodes across multiple environments. |
+| Target profile integration | Beta | Workflow templates reference logical target names. At execution time, a selected target profile resolves these to actual infrastructure. One template serves multiple customers or environments. |
+| Profile validation | Beta | Validates that a target profile has all required targets before workflow execution. Reports missing and extra targets. |
 | Version control integration | Beta | YAML workflows integrate with Git for versioning and collaboration. |
 | Conditional execution | Beta | Branch workflow paths based on step outcomes. |
 | Error handling | Beta | Automatic retry, rollback, and recovery options. |
@@ -102,6 +107,7 @@ This catalog lists all OpsZ capabilities with their current availability status.
 | Feature | Status | Description |
 |---------|--------|-------------|
 | Task routing | GA | Intelligent dispatch to target nodes via messaging infrastructure. |
+| Per-step target resolution | Beta | Job actions resolve targets from a profile per workflow step. Logical names are resolved to actual hosts or endpoints, then dispatched via the appropriate connection method. |
 | Dependency management | Beta | Ensure prerequisites complete before starting dependent tasks. |
 | Result collection | Beta | Gather output and logs from distributed execution. |
 | Execution analytics | Beta | Success rates, duration trends, and performance metrics. |
